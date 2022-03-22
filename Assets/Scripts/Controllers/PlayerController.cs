@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        JumpPlayer();
+        if (gameOver == false)
+        {
+            JumpPlayer();
+        }
     }
     private void JumpPlayer()
     {
@@ -26,13 +29,13 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
     }
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
         }
-        else if(other.gameObject.CompareTag("Obstacle"))
+        else if (other.gameObject.CompareTag("Obstacle"))
         {
             gameOver = true;
         }

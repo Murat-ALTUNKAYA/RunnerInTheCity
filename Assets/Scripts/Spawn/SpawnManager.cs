@@ -8,10 +8,19 @@ public class SpawnManager : MonoBehaviour
     private Vector3 spawnPos = new Vector3(38, 0, 0);
     [SerializeField] float startDelay = 2f;
     [SerializeField] float repeatRate = 2f;
+    private PlayerController playerControllerScript;
 
     private void Start()
     {
         InvokeRepeating("SpawnObstacle",startDelay,repeatRate);
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+    private void Update() 
+    {
+        if (playerControllerScript.gameOver == true)
+        {
+            CancelInvoke();
+        }
     }
     private void SpawnObstacle()
     {

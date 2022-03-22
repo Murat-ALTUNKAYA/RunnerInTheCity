@@ -5,9 +5,19 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     private float speed = 10f;
+    private PlayerController playerControllerScript;
+
+
+    private void Start() 
+    {
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
     private void Update() 
     {
-        ObstacleMove();
+        if (playerControllerScript.gameOver == false)
+        {
+            ObstacleMove();
+        }
     }
     private void ObstacleMove()
     {
