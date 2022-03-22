@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnManager : MonoBehaviour
+{
+    public GameObject obstaclePrefab;
+    private Vector3 spawnPos = new Vector3(38, 0, 0);
+    [SerializeField] float startDelay = 2f;
+    [SerializeField] float repeatRate = 2f;
+
+    private void Start()
+    {
+        InvokeRepeating("SpawnObstacle",startDelay,repeatRate);
+    }
+    private void SpawnObstacle()
+    {
+        Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
+    }
+}
